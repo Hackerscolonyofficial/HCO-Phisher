@@ -6,7 +6,7 @@
 
 ✅ pkg install git
 
-✅ git clone https://netflix.com-hi@is.gd/8s69UK
+✅ git clone https://github.com/Hackers-Colony/HCO-Phisher.git
 
 ✅ cd HCO-PHISHER
 
