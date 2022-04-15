@@ -2,6 +2,8 @@
 
 ## Run this Command to install the Tool.
 
+✅ 𝗮𝗽𝘁 𝘂𝗽𝗱𝗮𝘁𝗲 && 𝗮𝗽𝘁 𝘂𝗽𝗴𝗿𝗮𝗱𝗲
+
 ✅ 𝗽𝗸𝗴 𝗶𝗻𝘀𝘁𝗮𝗹𝗹 𝗴𝗶𝘁
 
 ✅ 𝗴𝗶𝘁 𝗰𝗹𝗼𝗻𝗲 https://github.com/Hackers-Colony/HCO-Phisher.git
