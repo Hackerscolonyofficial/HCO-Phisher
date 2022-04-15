@@ -1,26 +1,6 @@
 # HCO-Phisher
 
-## Command to run.
-
-```bash
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Run this Command to install the Tool.
 
 ✅ 𝗽𝗸𝗴 𝗶𝗻𝘀𝘁𝗮𝗹𝗹 𝗴𝗶𝘁
 
