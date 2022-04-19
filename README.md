@@ -6,7 +6,7 @@
 
 ✅ 𝗽𝗸𝗴 𝗶𝗻𝘀𝘁𝗮𝗹𝗹 𝗴𝗶𝘁
 
-✅ 𝗴𝗶𝘁 𝗰𝗹𝗼𝗻𝗲 https://github.com/Hackers-Colony/HCO-Phisher.git
+✅ 𝗴𝗶𝘁 𝗰𝗹𝗼𝗻𝗲 https://github.com/Hackerscolonyofficial/HCO-Phisher.git
 
 ✅ 𝗰𝗱 𝗛𝗖𝗢-𝗣𝗛𝗜𝗦𝗛𝗘𝗥
 
