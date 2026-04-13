@@ -1,10 +1,11 @@
 HCO Phisher 🎣
 
-A powerful phishing tool with 35+ templates, created for educational purposes and security awareness.
+A powerful phishing tool with 35+ templates, created for educational purposes and security awareness.</br>
+</br>
+<img src="https://img.shields.io/badge/HCO-Phisher-red"></br>
+<img src="https://img.shields.io/badge/Version-1.0-blue"></br>
+<img src="https://img.shields.io/badge/Platform-Linux%20%7C%20Termux-green"></br>
 
-https://img.shields.io/badge/HCO-Phisher-red
-https://img.shields.io/badge/Version-1.0-blue
-https://img.shields.io/badge/Platform-Linux%20%7C%20Termux-green
 
 📋 Table of Contents
 
@@ -43,14 +44,14 @@ Method 1: Automated Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/hackerscolonyofficial/hco-phisher
-cd hco-phisher
+git clone https://github.com/hackerscolonyofficial/HCO-Phisher
+cd HCO-Phisher
 
 # Make executable
-chmod +x hco-phisher.sh
+chmod +x HCO-Phisher.sh
 
 # Run the tool
-./hco-phisher.sh
+./HCO-Phisher.sh
 ```
 
 Method 2: Manual Setup
@@ -63,12 +64,12 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install php curl unzip cloudflared -y
 
 # Clone repository
-git clone https://github.com/hackerscolonyofficial/hco-phisher
-cd hco-phisher
+git clone https://github.com/hackerscolonyofficial/HCO-Phisher.git
+cd HCO-Phisher
 
 # Execute
-chmod +x hco-phisher.sh
-./hco-phisher.sh
+chmod +x HCO-Phisher.sh
+./HCO-Phisher.sh
 ```
 
 For Termux Users
@@ -76,10 +77,10 @@ For Termux Users
 ```bash
 pkg update && pkg upgrade
 pkg install php curl unzip cloudflared -y
-git clone https://github.com/hackerscolonyofficial/hco-phisher
-cd hco-phisher
-chmod +x hco-phisher.sh
-./hco-phisher.sh
+git clone https://github.com/hackerscolonyofficial/HCO-Phisher
+cd HCO-Phisher
+chmod +x HCO-Phisher.sh
+./HCO-Phisher.sh
 ```
 
 🚀 Usage
@@ -88,7 +89,7 @@ Step-by-Step Guide
 
 1. Start the Tool:
    ```bash
-   ./hco-phisher.sh
+   ./HCO-Phisher.sh
    ```
 2. Select Template: Choose from 35+ available platforms
 3. Choose Tunneling Method:
@@ -153,11 +154,15 @@ Other Platforms
 
 🌐 Social Media
 
-📱 Connect with Hacker Colony Official
+📱 Connect with Hacker Colony Official</br>
+</br>
+<img src="https://img.shields.io/badge/HCO-Phisher-red"></br>
 
-https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white
-https://img.shields.io/badge/GitHub-%23181717.svg?style=for-the-badge&logo=GitHub&logoColor=white
-https://img.shields.io/badge/Telegram-%2326A5E4.svg?style=for-the-badge&logo=Telegram&logoColor=white
+<img src="https://img.shields.io/badge/YouTube-%23FF0000.svg?style=for-the-badge&logo=YouTube&logoColor=white"></br>
+
+<img src="https://img.shields.io/badge/GitHub-%23181717.svg?style=for-the-badge&logo=GitHub&logoColor=white"></br>
+
+<img src="https://img.shields.io/badge/Telegram-%2326A5E4.svg?style=for-the-badge&logo=Telegram&logoColor=white"></br>
 
 🔗 Important Links
 
@@ -180,11 +185,11 @@ Common Issues & Solutions
    ```
 3. Permission Denied:
    ```bash
-   chmod +x hco-phisher.sh
+   chmod +x HCO-Phisher.sh
    ```
 4. Dependencies Missing:
    ```bash
-   ./hco-phisher.sh  # Auto-installs dependencies
+   ./HCO-Phisher.sh # Auto-installs dependencies
    ```
 
 Need Help?
@@ -194,10 +199,10 @@ Need Help?
 · 🐛 Issues: GitHub Issues Page
 
 📊 Statistics
-
-https://img.shields.io/badge/Downloads-1K+-brightgreen
-https://img.shields.io/badge/Templates-35+-orange
-https://img.shields.io/badge/Platforms-2-yellow
+</br></br>
+<img src="https://img.shields.io/badge/Downloads-1K+-brightgreen"></br>
+<img src="https://img.shields.io/badge/Templates-35+-orange"></br>
+<img src="https://img.shields.io/badge/Platforms-2-yellow"></br>
 
 🎯 Pro Tips
 
@@ -228,7 +233,8 @@ If you find this tool helpful, please give it a star on GitHub!
 
 Made with ❤️ by Hacker Colony Official
 
-https://img.shields.io/badge/HCO-Hacker%20Colony%20Official-red
+<img src="https://img.shields.io/badge/HCO-Hacker%20Colony%20Official-red">
+
 
 </div>
 
